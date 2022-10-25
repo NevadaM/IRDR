@@ -86,7 +86,7 @@ def AHP(criteria: list, prioritymatrix: np.array=None, crthreshold: float=0.1, p
 def Topsis(DecisionMatrix: np.ndarray, weights: list, TypeCriteria:list=None, AlternativeNames:list=None, CriteriaNames:list=None, printstuff: bool=False, plotstuff: bool=False, plotspider: bool=False):
     assert np.ndim(DecisionMatrix) == 2, 'Decision Matrix is not the correct dimension - should be (number of alternatives, number of criteria) i.e. of dimension 2'    
     assert np.ndim(weights) == 1, 'Weights list is not the correct dimension - should be (number of criteria) i.e. of dimension 1'
-    assert np.shape(DecisionMatrix)[1] == np.shape(weights)[0], 'Decision Matrix and Weights list have different dimensions'
+    assert np.shape(DecisionMatrix)[1] == len(weights), 'Decision Matrix and Weights list have different dimensions'
     if TypeCriteria is None:
         TypeCriteria = np.zeros((np.shape(DecisionMatrix)[1]))
     if AlternativeNames is None:
