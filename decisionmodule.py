@@ -158,16 +158,18 @@ def Topsis(DecisionMatrix: np.ndarray, weights: list, TypeCriteria:list=None, Al
                 plt.polar(label_loc, [*weightednormDecisionMat[i], weightednormDecisionMat[i][0]], label=AlternativeNames[i])
             lines, labels = plt.thetagrids((np.degrees(label_loc[:-1])), labels=CriteriaNames)
             plt.title('Radar Map - Weighted and Normalised Criteria Values')
-            plt.legend()
+            plt.legend(bbox_to_anchor=(1.3, 0.5))
             plt.show()
         if plotstuff:
-            figs, axs = plt.subplots(nrows=1, ncols=len(CriteriaNames)+1, figsize=(16, 9))
-            label_loc = np.linspace(0, 2*np.pi, num=len(CriteriaNames))
+            fig, axs = plt.subplots(nrows=1, ncols=len(CriteriaNames)+1)
             axs[0].bar(df.index, df['Closeness'])
-            axs[0].set_title('Closeness')
+            axs[0].set_title('Closeness', fontdict={'fontsize': 6})
+            axs[0].tick_params(axis='both', which='major', labelsize=8, direction='out', labelrotation=90, pad=0.01)
             for i in range(len(CriteriaNames)):
                 axs[i+1].bar(df.index, df[CriteriaNames[i]]) 
-                axs[i+1].set_title(f'{CriteriaNames[i]} values weighted + normalised')
+                axs[i+1].set_title(f'{CriteriaNames[i]}', fontdict={'fontsize': 6})
+                axs[i+1].tick_params(axis='both', which='major', labelsize=8, direction='out', labelrotation=90, pad=0.01)
+                # axs[i+1].set_ylabel('Values weighted and normalised')
             plt.show()
     
     return(df)

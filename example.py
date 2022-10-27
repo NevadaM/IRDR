@@ -31,6 +31,6 @@ weights, consistent, CR, prioritymatrix, CI, adoptedRCI = AHP(criteria, priority
 
 df = Topsis(decisionmatrix, weights,
             TypeCriteria=typecriteria, AlternativeNames=alternatives,
-            CriteriaNames=criteria, printstuff=True, plotspider=True, plotstuff=True)
+            CriteriaNames=criteria, printstuff=True, plotspider=True, plotstuff=False)
 
 
